@@ -1,22 +1,16 @@
 package com.fges.todoapp;
 
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.MissingNode;
+import com.fges.todoapp.FileHandler.CsvFileHandler;
+import com.fges.todoapp.FileHandler.JsonFileHandler;
+import com.fges.todoapp.List.CommandsHandler;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
 
 /**
  * Hello world!
@@ -61,62 +55,32 @@ public class App {
         if (Files.exists(filePath)) {
             fileContent = Files.readString(filePath);
         }
+        if (CommandsHandler.isInsert(command)) {
+            if (CsvFileHandler.isCsv(fileName)) {
+                CsvFileHandler csvFileHandler = new CsvFileHandler();
 
-        if (command.equals("insert")) {
-            if (positionalArgs.size() < 2) {
-                System.err.println("Missing TODO name");
-                return 1;
+                csvFileHandler.insert(positionalArgs, fileName, fileContent, filePath);
+            } else if (JsonFileHandler.isJson(fileName)) {
+                JsonFileHandler jsonFileHandler = new JsonFileHandler();
+
+                jsonFileHandler.insert(positionalArgs, fileName, fileContent, filePath);
+            } else {
+                System.err.println("Unsupported file type");
             }
-            String todo = positionalArgs.get(1);
+        } else if (CommandsHandler.isList(command)) {
+            if (CsvFileHandler.isCsv(fileName)) {
+                CsvFileHandler csvFileHandler = new CsvFileHandler();
 
-            if (fileName.endsWith(".json")) {
-                // JSON
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode actualObj = mapper.readTree(fileContent);
-                if (actualObj instanceof MissingNode) {
-                    // Node was not reconised
-                    actualObj = JsonNodeFactory.instance.arrayNode();
-                }
+                csvFileHandler.list(fileName, fileContent);
+            } else if (JsonFileHandler.isJson(fileName)) {
+                JsonFileHandler jsonFileHandler = new JsonFileHandler();
 
-                if (actualObj instanceof ArrayNode arrayNode) {
-                    arrayNode.add(todo);
-                }
-
-                Files.writeString(filePath, actualObj.toString());
+                jsonFileHandler.list(fileName, fileContent);
+            } else {
+                System.err.println("Unsupported file type");
             }
-            if (fileName.endsWith(".csv")) {
-                // CSV
-                if (!fileContent.endsWith("\n") && !fileContent.isEmpty()) {
-                    fileContent += "\n";
-                }
-                fileContent += todo;
-
-                Files.writeString(filePath, fileContent);
-            }
-        }
-
-
-        if (command.equals("list")) {
-            if (fileName.endsWith(".json")) {
-                // JSON
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode actualObj = mapper.readTree(fileContent);
-                if (actualObj instanceof MissingNode) {
-                    // Node was not recognised
-                    actualObj = JsonNodeFactory.instance.arrayNode();
-                }
-
-                if (actualObj instanceof ArrayNode arrayNode) {
-                    arrayNode.forEach(node -> System.out.println("- " + node.toString()));
-                }
-            }
-            if (fileName.endsWith(".csv")) {
-                // CSV
-                System.out.println(Arrays.stream(fileContent.split("\n"))
-                        .map(todo -> "- " + todo)
-                        .collect(Collectors.joining("\n"))
-                );
-            }
+        } else {
+            System.err.println("Unsupported command");
         }
 
         System.err.println("Done.");
