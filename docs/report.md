@@ -4,7 +4,7 @@
 - **Lastname**: [DODART]
 
 
-> Add your thoughts on every TP bellow, everything is interresting but no need to right a book.
+> Add your thoughts on every TP bellow, everything is interesting but no need to right a book.
 > 
 > Keep it short simple and efficient:
 > 
