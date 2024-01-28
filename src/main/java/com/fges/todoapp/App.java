@@ -2,9 +2,11 @@ package com.fges.todoapp;
 
 
 
-import com.fges.todoapp.FileHandler.CsvFileHandler;
-import com.fges.todoapp.FileHandler.JsonFileHandler;
-import com.fges.todoapp.List.CommandsHandler;
+import com.fges.todoapp.CommandsHandler.*;
+import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandGetCommand;
+import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandGetFileContent;
+import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandGetFileName;
+import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandParser;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
@@ -28,25 +30,18 @@ public class App {
 
     public static int exec(String[] args) throws IOException {
         Options cliOptions = new Options();
-        CommandLineParser parser = new DefaultParser();
+
 
         cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
 
         CommandLine cmd;
-        try {
-            cmd = parser.parse(cliOptions, args);
-        } catch (ParseException ex) {
-            System.err.println("Fail to parse arguments: " + ex.getMessage());
-            return 1;
-        }
 
-        String fileName = cmd.getOptionValue("s");
+        cmd= CommandParser.parseCommandLine(args,cliOptions);
 
-        List<String> positionalArgs = cmd.getArgList();
-        if (positionalArgs.isEmpty()) {
-            System.err.println("Missing Command");
-            return 1;
-        }
+
+        String fileName = CommandGetFileName.getFileName(cmd);
+
+        List<String> positionalArgs = CommandGetCommand.getCommand(cmd);
 
         String command = positionalArgs.get(0);
 
@@ -55,34 +50,16 @@ public class App {
         String fileContent = "";
 
         if (Files.exists(filePath)) {
-            fileContent = Files.readString(filePath);
+            fileContent = CommandGetFileContent.getFileContent(filePath);
         }
-        if (CommandsHandler.isInsert(command)) {
-            if (CsvFileHandler.isCsv(fileName)) {
-                CsvFileHandler csvFileHandler = new CsvFileHandler();
-
-                csvFileHandler.insert(positionalArgs, fileName, fileContent, filePath);
-            } else if (JsonFileHandler.isJson(fileName)) {
-                JsonFileHandler jsonFileHandler = new JsonFileHandler();
-
-                jsonFileHandler.insert(positionalArgs, fileName, fileContent, filePath);
-            } else {
-                System.err.println("Unsupported file type");
-            }
-        } else if (CommandsHandler.isList(command)) {
-            if (CsvFileHandler.isCsv(fileName)) {
-                CsvFileHandler csvFileHandler = new CsvFileHandler();
-
-                csvFileHandler.list(fileName, fileContent);
-            } else if (JsonFileHandler.isJson(fileName)) {
-                JsonFileHandler jsonFileHandler = new JsonFileHandler();
-
-                jsonFileHandler.list(fileName, fileContent);
-            } else {
-                System.err.println("Unsupported file type");
-            }
-        } else {
-            System.err.println("Unsupported command");
+        try {
+            CommandExecutor.executeCommand( fileName, command, positionalArgs, fileContent, filePath);
+        } catch (IOException e) {
+            System.err.println("Erreur d'entrée/sortie : " + e.getMessage());
+        } catch (UnsupportedOperationException e) {
+            System.err.println("Opération non prise en charge : " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Une erreur inattendue s'est produite : " + e.getMessage());
         }
 
         System.err.println("Done.");
