@@ -46,5 +46,41 @@
 >>- En lien avec le primier point, Je n'ai pas trouvé à quoi ressemblait le stockage dans les fichiers lorsque le test réussissait.
 >>#### Gestion de Git
 >> - Perte de temps due à une utilisation incorrecte de Git.
- 
+>> 
+>#### diagrame de class de mon programme:
+> ```mermaid
+> classDiagram
+>     class App {
+>         +main(String[] args): void
+>         +exec(String[] args): int
+>     }
+>     class CommandLineSettingsProvider {
+>         +parseCommandLine(String[] args, Options cliOptions): CommandLine
+>         +getFileName(CommandLine cmd): String
+>         +getCommand(CommandLine cmd): List<String>
+>         +getFileContent(Path filePath): String
+>     }
+>     class CommandExecutor {
+>         +executeCommand(String fileName, String command, List<String> positionalArgs, String fileContent, Path filePath): void
+>     }
+>     class FileHandlerFactory {
+>         +createFileHandler(String fileName): Optional<FileHandlerBase>
+>     }
+>     class FileHandlerBase {
+>         +insert(List<String> positionalArgs, String fileName, String fileContent, Path filePath): void
+>         +list(String fileContent): void
+>     }
+>     class CsvFileBase {
+>         +isCsv(String fileName): boolean
+>     }
+>     class JsonFileBase {
+>         +isJson(String fileName): boolean
+>     }
+>     App --|> CommandLineSettingsProvider
+>     App --|> CommandExecutor
+>     CommandExecutor --|> FileHandlerFactory
+>     FileHandlerFactory --|> FileHandlerBase
+>     FileHandlerBase <|.. CsvFileBase
+>     FileHandlerBase <|.. JsonFileBase
+> ```
 ---
