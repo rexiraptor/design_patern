@@ -2,22 +2,23 @@ package com.fges.todoapp.CommandsHandler;
 
 import com.fges.todoapp.FileHandler.FileHandlerBase;
 import com.fges.todoapp.FileHandler.FileHandlerFactory;
+import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.Optional;
 
 public class CommandExecutor {
 
-    public static void executeCommand(String fileName, String command, List<String> positionalArgs, String fileContent, Path filePath) throws IOException {
-        Optional<FileHandlerBase> fileHandlerOptional = FileHandlerFactory.createFileHandler(fileName);
+    public void executeCommand(String fileName, String command, String fileContent, Path filePath , CommandLine cmd) throws IOException {
+        FileHandlerFactory fileHandlerFactory = new FileHandlerFactory();
+        Optional<FileHandlerBase> fileHandlerOptional = fileHandlerFactory.createFileHandler(fileName);
 
         if (fileHandlerOptional.isPresent()) {
             FileHandlerBase fileHandler = fileHandlerOptional.get();
 
             if (CommandIsInsert.isInsert(command)) {
-                fileHandler.insert(positionalArgs, fileName, fileContent, filePath);
+                fileHandler.insert(fileName, fileContent, filePath, cmd);
             } else if (CommandIsList.isList(command)) {
                 fileHandler.list(fileContent);
             } else {

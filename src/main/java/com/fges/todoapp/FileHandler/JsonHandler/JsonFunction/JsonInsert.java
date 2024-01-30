@@ -5,20 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.MissingNode;
-import com.fges.todoapp.Task;
+import com.fges.todoapp.TaskManager.Task;
+import com.fges.todoapp.TaskManager.TaskCreator;
+import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 
 public class JsonInsert {
-    public static void insert(List<String> positionalArgs, String fileContent, Path filePath) throws IOException {
-        if (positionalArgs.size() < 2) {
-            System.err.println("Missing Task name");
-            return;
-        }
-        String taskName = positionalArgs.get(1);
+    public static void insert(String fileContent, Path filePath, CommandLine cmd) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode actualObj = mapper.readTree(fileContent);
@@ -27,7 +23,10 @@ public class JsonInsert {
         }
 
         if (actualObj instanceof ArrayNode arrayNode) {
-            Task newTask = new Task(taskName);
+
+            TaskCreator taskCreator = new TaskCreator();
+
+            Task newTask = taskCreator.creator(cmd);
 
             JsonNode taskNode = mapper.valueToTree(newTask);
 

@@ -84,3 +84,71 @@
 >     FileHandlerBase <|.. JsonFileBase
 > ```
 ---
+>## Deuxième Partie
+>>### Introduction
+>>Pour la deuxième partie du TP, je me suis concentré sur plusieurs points. Tout d'abord, l'ajout de fonctionnalités demandées par Ilia. Ce processus n'a pas été très compliqué car j'avais déjà créé un objet Task et adapté mes classes Insert et List en conséquence. Il m'a suffi d'ajouter un paramètre dans la classe Task et dans ses initialisations. Pendant ce processus, je me suis rendu compte qu'il peut être éprouvant de changer tous les paramètres qui initialisent la classe Task. J'ai donc créé une classe TaskCreator (distincte de ma classe Task pour la garder la plus simple possible) où je me charge de renvoyer une tâche avec les paramètres d'initialisation de la class Task (permet de regrouper les paramètres d'initialisation dans un seul point central)
+>>### Gestion des Tâches et Flexibilité
+>>Pour couvrir le plus d'éventualités et mieux gérer mes erreurs, j'ai envoyé ma ligne de commande directement dans ma fonction Insert plutôt que de passer par une liste d'arguments positionnels . Cela peut être moins optimal, mais je pense que cela offre plus de flexibilité. Peut-être devrais-je appliquer la même méthode pour la fonction List ?
+>>### Réflexion sur les Fonctions Statiques
+>>Je me suis aussi préoccupé de mes nombreuses fonctions statiques. Pour cela, je me suis concentré sur les fonctions principales de mon programme. Je pense notamment à ma classe CommandExecutor, où il me semble beaucoup plus facile de comprendre le fonctionnement du code avec des fonctions en statique.
+>>### Gestion des Tests
+>>Au moment où je fais ce commit, j'ai laissé les listes avec un "-" si l'option `done == false` pour qu'elles passent toujours les ghost tests.
+
+
+```mermaid
+
+classDiagram
+class App {
++main(String[] args): void
++exec(String[] args): int
+}
+class CommandParser {
++parseCommandLine(String[] args, Options cliOptions): CommandLine
+}
+class CommandGetFileName {
++getFileName(CommandLine cmd): String
+}
+class CommandGetCommand {
++getCommand(CommandLine cmd): List<String>
+}
+class CommandGetFileContent {
++getFileContent(Path filePath): String
+}
+class Task {
+-String name
+-Boolean done
++getName(): String
++getDone(): Boolean
+}
+class TaskCreator {
++creator(CommandLine cmd): Task
+}
+class FileHandlerFactory {
++createFileHandler(String fileName): Optional<FileHandlerBase>
+}
+class FileHandlerBase {
++insert(String fileName, String fileContent, Path filePath, CommandLine cmd): void
++list(String fileContent): void
+}
+class CsvFileBase {
++isCsv(String fileName): boolean
+}
+class JsonFileBase {
++isJson(String fileName): boolean
+}
+class CommandExecutor {
++executeCommand(String fileName, String command, String fileContent, Path filePath, CommandLine cmd): void
+}
+
+
+    App --|> CommandParser
+    App --|> CommandGetFileName
+    App --|> CommandGetCommand
+    App --|> CommandGetFileContent
+    App --|> CommandExecutor
+    CommandExecutor --|> FileHandlerFactory
+    FileHandlerFactory --|> FileHandlerBase
+    FileHandlerBase <|.. CsvFileBase
+    FileHandlerBase <|.. JsonFileBase
+    App --|> TaskCreator
+```

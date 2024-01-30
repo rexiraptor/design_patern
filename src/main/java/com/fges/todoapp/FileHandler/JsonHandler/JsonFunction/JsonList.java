@@ -18,7 +18,8 @@ public class JsonList {
         if (actualObj instanceof ArrayNode arrayNode) {
             arrayNode.forEach(node -> {
                 String taskName = node.get("name").asText();
-                System.out.println("- \"" + taskName + "\""); // Add double quotes
+                String status = node.get("done").asBoolean() ? "Done: " : " -";
+                System.out.println(status + " \"" + taskName + "\"");
             });
         }
     }

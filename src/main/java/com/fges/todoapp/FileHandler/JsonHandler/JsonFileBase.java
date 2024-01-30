@@ -5,16 +5,16 @@ import com.fges.todoapp.FileHandler.FileHandlerBase;
 import com.fges.todoapp.FileHandler.JsonHandler.JsonFunction.IsJson;
 import com.fges.todoapp.FileHandler.JsonHandler.JsonFunction.JsonInsert;
 import com.fges.todoapp.FileHandler.JsonHandler.JsonFunction.JsonList;
+import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 
 public class JsonFileBase implements FileHandlerBase {
 
     @Override
-    public void insert(List<String> positionalArgs, String fileName, String fileContent, Path filePath) throws IOException {
-        JsonInsert.insert(positionalArgs,  fileContent, filePath);
+    public void insert(String fileName, String fileContent, Path filePath, CommandLine cmd) throws IOException {
+        JsonInsert.insert(fileContent, filePath, cmd);
     }
 
     @Override

@@ -4,15 +4,15 @@ import com.fges.todoapp.FileHandler.CsvHandler.CsvFunction.CsvInsert;
 import com.fges.todoapp.FileHandler.CsvHandler.CsvFunction.CsvList;
 import com.fges.todoapp.FileHandler.CsvHandler.CsvFunction.IsCsv;
 import com.fges.todoapp.FileHandler.FileHandlerBase;
+import org.apache.commons.cli.CommandLine;
 
 import java.nio.file.Path;
-import java.util.List;
 
 public class CsvFileBase implements FileHandlerBase {
 
     @Override
-    public void insert(List<String> positionalArgs, String fileName, String fileContent, Path filePath)  {
-        CsvInsert.insert(positionalArgs,  fileContent, filePath);
+    public void insert(String fileName, String fileContent, Path filePath, CommandLine cmd)  {
+        CsvInsert.insert(fileContent, filePath, cmd);
     }
 
     @Override

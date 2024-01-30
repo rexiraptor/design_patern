@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class FileHandlerFactory {
 
-    public static Optional<FileHandlerBase> createFileHandler(String fileName) {
+    public Optional<FileHandlerBase> createFileHandler(String fileName) {
         if (CsvFileBase.isCsv(fileName)) {
             return Optional.of(new CsvFileBase());
         } else if (JsonFileBase.isJson(fileName)) {

@@ -31,13 +31,13 @@ public class App {
     public static int exec(String[] args) throws IOException {
         Options cliOptions = new Options();
 
+        cliOptions.addOption("d","done", false, "Indique si la tâche est terminée");
 
         cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
 
         CommandLine cmd;
 
         cmd= CommandParser.parseCommandLine(args,cliOptions);
-
 
         String fileName = CommandGetFileName.getFileName(cmd);
 
@@ -53,7 +53,8 @@ public class App {
             fileContent = CommandGetFileContent.getFileContent(filePath);
         }
         try {
-            CommandExecutor.executeCommand( fileName, command, positionalArgs, fileContent, filePath);
+            CommandExecutor commandExecutor =new CommandExecutor();
+            commandExecutor.executeCommand( fileName, command, fileContent, filePath, cmd);
         } catch (IOException e) {
             System.err.println("Erreur d'entrée/sortie : " + e.getMessage());
         } catch (UnsupportedOperationException e) {
