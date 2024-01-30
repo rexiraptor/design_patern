@@ -93,62 +93,57 @@
 >>Je me suis aussi préoccupé de mes nombreuses fonctions statiques. Pour cela, je me suis concentré sur les fonctions principales de mon programme. Je pense notamment à ma classe CommandExecutor, où il me semble beaucoup plus facile de comprendre le fonctionnement du code avec des fonctions en statique.
 >>### Gestion des Tests
 >>Au moment où je fais ce commit, j'ai laissé les listes avec un "-" si l'option `done == false` pour qu'elles passent toujours les ghost tests.
-
-
-```mermaid
-
-classDiagram
-class App {
-+main(String[] args): void
-+exec(String[] args): int
-}
-class CommandParser {
-+parseCommandLine(String[] args, Options cliOptions): CommandLine
-}
-class CommandGetFileName {
-+getFileName(CommandLine cmd): String
-}
-class CommandGetCommand {
-+getCommand(CommandLine cmd): List<String>
-}
-class CommandGetFileContent {
-+getFileContent(Path filePath): String
-}
-class Task {
--String name
--Boolean done
-+getName(): String
-+getDone(): Boolean
-}
-class TaskCreator {
-+creator(CommandLine cmd): Task
-}
-class FileHandlerFactory {
-+createFileHandler(String fileName): Optional<FileHandlerBase>
-}
-class FileHandlerBase {
-+insert(String fileName, String fileContent, Path filePath, CommandLine cmd): void
-+list(String fileContent): void
-}
-class CsvFileBase {
-+isCsv(String fileName): boolean
-}
-class JsonFileBase {
-+isJson(String fileName): boolean
-}
-class CommandExecutor {
-+executeCommand(String fileName, String command, String fileContent, Path filePath, CommandLine cmd): void
-}
-
-
-    App --|> CommandParser
-    App --|> CommandGetFileName
-    App --|> CommandGetCommand
-    App --|> CommandGetFileContent
-    App --|> CommandExecutor
-    CommandExecutor --|> FileHandlerFactory
-    FileHandlerFactory --|> FileHandlerBase
-    FileHandlerBase <|.. CsvFileBase
-    FileHandlerBase <|.. JsonFileBase
-    App --|> TaskCreator
-```
+>
+>#### diagrame de class de mon programme:
+>  (pour plus de lisibilité j'ai simplifié mon fichier CommandHandlers en une seul class excluant commandExecutor qui as pour moi une responsabilité plus grande  )
+>```mermaid
+>classDiagram
+>    class App {
+>        +exec(String[] args): int
+>        +main(String[] args): void
+>    }
+>    class TaskCreator {
+>        +creator(CommandLine cmd): Task
+>    }
+>    class Task {
+>        -String name
+>        -Boolean done
+>        +getName(): String
+>        +getDone(): Boolean
+>   }
+>    class FileHandlerFactory {
+>        +createFileHandler(String fileName): Optional<FileHandlerBase>
+>    }
+>    class FileHandlerBase {
+>        +insert(String fileName, String fileContent, Path filePath, CommandLine cmd): void
+>        +list(String fileContent): void
+>    }
+>    class JsonFileBase {
+>        +isJson(String fileName): boolean
+>    }
+>    class CsvFileBase {
+>        +isCsv(String fileName): boolean
+>    }
+>    class CommandExecutor {
+>        +executeCommand(String fileName, String command, String fileContent, Path filePath, CommandLine cmd): void
+>    }
+>     class CommandHandlers {
+>         +parseCommandLine(String[] args, Options cliOptions): CommandLine
+>         +getFileName(CommandLine cmd): String
+>         +getCommand(CommandLine cmd): List<String>
+>         +getFileContent(Path filePath): String
+>         +isList(String command): boolean
+>         +isinsert(String command): boolean
+>     }
+>
+>    Task<..TaskCreator
+>    CsvFileBase <|-- TaskCreator
+>    JsonFileBase <|-- TaskCreator
+>    CommandExecutor --|> FileHandlerFactory
+>    FileHandlerFactory --|> FileHandlerBase
+>    FileHandlerBase <|.. JsonFileBase
+>    FileHandlerBase <|.. CsvFileBase
+>    App --|> CommandHandlers
+>    CommandHandlers --|>CommandExecutor
+>```
+---
