@@ -2,11 +2,11 @@ package com.fges.todoapp;
 
 
 
-import com.fges.todoapp.CommandsHandler.*;
-import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandGetCommand;
-import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandGetFileContent;
-import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandGetFileName;
-import com.fges.todoapp.CommandsHandler.CommandLineSettingsProvider.CommandParser;
+import com.fges.todoapp.logic.CommandExecutor;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetCommand;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
+import com.fges.todoapp.presentation.settingsprovider.CommandParser;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;

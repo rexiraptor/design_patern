@@ -147,3 +147,8 @@
 >    CommandHandlers --|>CommandExecutor
 >```
 ---
+
+>## Troisième  Partie
+> j'ai commencé cette troisième en faisant deux chose:
+> ajouter une fonctionnalité dont je n'ai pas pris connaissance qu'il fallait l'ajouter (le -d sur la command list)  
+> corriger le partie list de mon prgramme pour correspondre a la sortie attendu par le ghost test
