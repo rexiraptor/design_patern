@@ -29,6 +29,7 @@ public class App {
     }
 
     public static int exec(String[] args) throws IOException {
+
         Options cliOptions = new Options();
 
         cliOptions.addOption("d","done", false, "Indique si la tâche est terminée");
@@ -48,6 +49,7 @@ public class App {
         Path filePath = Paths.get(fileName);
 
         String fileContent = "";
+
 
         if (Files.exists(filePath)) {
             fileContent = CommandGetFileContent.getFileContent(filePath);

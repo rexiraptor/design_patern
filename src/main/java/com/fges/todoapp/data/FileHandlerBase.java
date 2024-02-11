@@ -9,4 +9,5 @@ public interface  FileHandlerBase {
 
     void list(String fileContent, CommandLine cmd) throws JsonProcessingException;
 
+
 }

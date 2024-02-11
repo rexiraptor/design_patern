@@ -2,7 +2,6 @@ package com.fges.todoapp.data.csvhandler;
 
 import com.fges.todoapp.data.csvhandler.csvfunction.CsvInsert;
 import com.fges.todoapp.data.csvhandler.csvfunction.CsvList;
-import com.fges.todoapp.data.csvhandler.csvfunction.IsCsv;
 import com.fges.todoapp.data.FileHandlerBase;
 import com.fges.todoapp.logic.PrintManager;
 import org.apache.commons.cli.CommandLine;
@@ -27,9 +26,6 @@ public class CsvFileBase implements FileHandlerBase {
     }
 
 
-    public static boolean isCsv(String fileName){
-        return IsCsv.isCsv(fileName);
-    }
 
 }
 

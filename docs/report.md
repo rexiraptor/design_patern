@@ -152,3 +152,5 @@
 > j'ai commencé cette troisième en faisant deux chose:
 > ajouter une fonctionnalité dont je n'ai pas pris connaissance qu'il fallait l'ajouter (le -d sur la command list)  
 > corriger le partie list de mon prgramme pour correspondre a la sortie attendu par le ghost test
+> j'ai modifier la logique de ma class FileHandlerFactory pour qu'il soit beaucoup plus facile de mettre en place de nouveau type de fichier a gérer.
+> le but est de faire en sorte que les fichier puisse être identifiée et instanciée dynamiquement en fonction du nom du fichier, sans codage explicite des conditions pour chaque type. 
