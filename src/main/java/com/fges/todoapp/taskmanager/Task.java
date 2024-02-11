@@ -1,8 +1,8 @@
 package com.fges.todoapp.taskmanager;
 
 public class Task {
-    private String name;
-    private Boolean done;
+    private final String name;
+    private final Boolean done;
 
     public Task(String name,Boolean done) {
         this.name = name;

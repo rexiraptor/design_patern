@@ -1,25 +1,15 @@
 package com.fges.todoapp.data;
 
-import com.fges.todoapp.data.csvhandler.CsvFileBase;
-import com.fges.todoapp.data.jsonhandler.JsonFileBase;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetFileExtension;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class FileHandlerFactory {
-    private static final Map<String, FileHandlerBase> handlerMap = new HashMap<>();
-
-    static {
-        handlerMap.put("csv", new CsvFileBase());
-        handlerMap.put("json", new JsonFileBase());
-        // Ajoutez d'autres gestionnaires ici
-    }
+    private static final Map<String, FileHandlerBase> handlerMap = HandlerMap.createSupportedHandlersMap();
 
     public Optional<FileHandlerBase> createFileHandler(String fileName) {
-        // Extraire l'extension du fichier
-        String fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-
+        String fileExtension = CommandGetFileExtension.getFileExtension(fileName);
         if (handlerMap.containsKey(fileExtension)) {
             return Optional.of(handlerMap.get(fileExtension));
         } else {
@@ -27,3 +17,5 @@ public class FileHandlerFactory {
         }
     }
 }
+
+
