@@ -154,3 +154,5 @@
 > corriger le partie list de mon prgramme pour correspondre a la sortie attendu par le ghost test
 > j'ai modifier la logique de ma class FileHandlerFactory pour qu'il soit beaucoup plus facile de mettre en place de nouveau type de fichier a gérer.
 > le but est de faire en sorte que les fichier puisse être identifiée et instanciée dynamiquement en fonction du nom du fichier, sans codage explicite des conditions pour chaque type. 
+> 
+> modifier la logique d'execution de mes fonction (class CommandExecutor) en utilisant la meme technique que pour mon FileHandlerFactory
