@@ -46,7 +46,7 @@ public class App {
 
         String command = positionalArgs.get(0);
 
-        Path filePath = Paths.get(fileName);
+        Path filePath = Paths.get("src/main/java/com/fges/todoapp/data/todofiles/" + fileName);
 
         String fileContent = "";
 
