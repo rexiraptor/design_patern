@@ -6,8 +6,11 @@ import java.util.Map;
 import java.util.Optional;
 
 public class FileHandlerFactory {
-    private static final Map<String, FileHandlerBase> handlerMap = HandlerMap.createSupportedHandlersMap();
+    private final Map<String, FileHandlerBase> handlerMap;
 
+    public FileHandlerFactory (){
+        this.handlerMap=FileHandlerMap.createSupportedHandlersMap();
+    }
     public Optional<FileHandlerBase> createFileHandler(String fileName) {
         String fileExtension = CommandGetFileExtension.getFileExtension(fileName);
         if (handlerMap.containsKey(fileExtension)) {

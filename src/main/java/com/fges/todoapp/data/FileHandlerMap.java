@@ -6,7 +6,7 @@ import com.fges.todoapp.data.jsonhandler.JsonFileBase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HandlerMap {
+public class FileHandlerMap {
 
     //HashMap qui contient le nom des extensions de fichier avec lesquelle l'application fonctionne,
     // et leurs "FileHandlerBase" associé
