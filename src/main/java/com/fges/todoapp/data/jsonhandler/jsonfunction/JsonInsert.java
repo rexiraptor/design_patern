@@ -5,19 +5,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.MissingNode;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetFilePath;
 import com.fges.todoapp.taskmanager.Task;
 import com.fges.todoapp.taskmanager.TaskCreator;
 import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class JsonInsert {
-    public static void insert(String fileContent, Path filePath, CommandLine cmd) throws IOException {
+    public static void insert(CommandLine cmd) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode actualObj = mapper.readTree(fileContent);
+        JsonNode actualObj = mapper.readTree(CommandGetFileContent.getFileContent(cmd));
         if (actualObj instanceof MissingNode) {
             actualObj = JsonNodeFactory.instance.arrayNode();
         }
@@ -33,6 +34,6 @@ public class JsonInsert {
             arrayNode.add(taskNode);
         }
 
-        Files.writeString(filePath, actualObj.toString());
+        Files.writeString(CommandGetFilePath.getFilePath(cmd), actualObj.toString());
     }
 }

@@ -2,18 +2,13 @@ package com.fges.todoapp;
 
 
 
+import com.fges.todoapp.logic.commandhandler.CliOptionHandler;
 import com.fges.todoapp.logic.CommandExecutor;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetCommand;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
-import com.fges.todoapp.presentation.settingsprovider.CommandParser;
+import com.fges.todoapp.presentation.settingsprovider.*;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+
 
 
 /**
@@ -30,33 +25,19 @@ public class App {
 
     public static int exec(String[] args) throws IOException {
 
-        Options cliOptions = new Options();
+        CliOptionHandler cliOptionHandler =new CliOptionHandler();
 
-        cliOptions.addOption("d","done", false, "Indique si la tâche est terminée");
+        CommandLine cmd= CommandParser.parseCommandLine(args,cliOptionHandler.cliOptionHandler());
 
-        cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
-
-        CommandLine cmd;
-
-        cmd= CommandParser.parseCommandLine(args,cliOptions);
-
-        String fileName = CommandGetFileName.getFileName(cmd);
-
-        List<String> positionalArgs = CommandGetCommand.getCommand(cmd);
-
-        String command = positionalArgs.get(0);
-
-        Path filePath = Paths.get("src/main/java/com/fges/todoapp/data/todofiles/" + fileName);
-
-        String fileContent = "";
+        String command = CommandGetCommand.getCommand(cmd).get(0);
 
 
-        if (Files.exists(filePath)) {
-            fileContent = CommandGetFileContent.getFileContent(filePath);
-        }
         try {
-            CommandExecutor commandExecutor =new CommandExecutor();
-            commandExecutor.executeCommand( fileName, command, fileContent, filePath, cmd);
+            CommandExecutor commandExecutor = new CommandExecutor();
+            commandExecutor.executeCommand(
+                    command,
+                    cmd
+            );
         } catch (IOException e) {
             System.err.println("Erreur d'entrée/sortie : " + e.getMessage());
         } catch (UnsupportedOperationException e) {

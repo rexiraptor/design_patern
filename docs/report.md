@@ -156,3 +156,4 @@
 > le but est de faire en sorte que les fichier puisse être identifiée et instanciée dynamiquement en fonction du nom du fichier, sans codage explicite des conditions pour chaque type. 
 > 
 > modifier la logique d'execution de mes fonction (class CommandExecutor) en utilisant la meme technique que pour mon FileHandlerFactory
+> 

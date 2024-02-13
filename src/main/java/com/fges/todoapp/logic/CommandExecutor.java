@@ -5,10 +5,10 @@ import com.fges.todoapp.data.FileHandlerBase;
 import com.fges.todoapp.data.FileHandlerFactory;
 import com.fges.todoapp.logic.commandhandler.CommandHandlerMap;
 import com.fges.todoapp.logic.commandhandler.FileCommandAction;
+import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
 import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Map;
 import java.util.Optional;
 
@@ -20,7 +20,10 @@ public class CommandExecutor {
         this.commandActions = CommandHandlerMap.initializeCommandActions();
     }
 
-    public void executeCommand(String fileName, String command, String fileContent, Path filePath, CommandLine cmd) throws IOException {
+    public void executeCommand( String command, CommandLine cmd) throws IOException {
+
+        var fileName = CommandGetFileName.getFileName(cmd);
+
         FileHandlerFactory fileHandlerFactory = new FileHandlerFactory();
         Optional<FileHandlerBase> fileHandlerOptional = fileHandlerFactory.createFileHandler(fileName);
 
@@ -28,7 +31,7 @@ public class CommandExecutor {
             FileHandlerBase fileHandler = fileHandlerOptional.get();
 
             if (commandActions.containsKey(command)) {
-                commandActions.get(command).execute(fileHandler, fileName, fileContent, filePath, cmd);
+                commandActions.get(command).execute(fileHandler, cmd);
             } else {
                 throw new UnsupportedOperationException("Unsupported command: " + command);
             }
