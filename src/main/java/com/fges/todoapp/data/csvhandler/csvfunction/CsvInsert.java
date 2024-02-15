@@ -1,13 +1,12 @@
 package com.fges.todoapp.data.csvhandler.csvfunction;
 
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetFilePath;
 import com.fges.todoapp.taskmanager.Task;
-import com.fges.todoapp.taskmanager.TaskCreator;
-import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,21 +14,19 @@ public class CsvInsert {
 
     private static final Logger LOGGER = Logger.getLogger(CsvInsert.class.getName());
 
-    public static void insert( CommandLine cmd) {
+    public static void insert(List<Task> tasks, Path filePath) {
         try {
+            StringBuilder fileContent = new StringBuilder(CommandGetFileContent.getFileContent(filePath));
 
-                var fileContent= CommandGetFileContent.getFileContent(cmd);
+            if (!fileContent.toString().endsWith("\n") && (!fileContent.isEmpty())) {
+                fileContent.append("\n");
+            }
 
-                TaskCreator taskCreator = new TaskCreator();
+            for (Task task : tasks) {
+                fileContent.append(task.getName()).append("|").append(task.getDone()).append("\n");
+            }
 
-                Task task = taskCreator.creator(cmd);
-
-                if (!fileContent.endsWith("\n") && !fileContent.isEmpty()) {
-                    fileContent += "\n";
-                }
-                fileContent += task.getName() +"|" + task.getDone();
-
-                Files.writeString(CommandGetFilePath.getFilePath(cmd), fileContent);
+            Files.writeString(filePath, fileContent.toString());
 
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Error writing to file", e);

@@ -14,10 +14,4 @@ public class CommandGetCommand {
         return positionalArgs;
     }
 
-    public static class CommandIsInsert {
-        public static boolean isInsert(String command){
-            return command.equals("insert");
-        }
-
-    }
 }

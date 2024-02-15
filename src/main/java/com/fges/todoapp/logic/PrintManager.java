@@ -2,14 +2,12 @@ package com.fges.todoapp.logic;
 
 import com.fges.todoapp.presentation.PrintTask;
 import com.fges.todoapp.taskmanager.Task;
-import com.fges.todoapp.taskmanager.taskvariable.GetIsDone;
-import org.apache.commons.cli.CommandLine;
 
 import java.util.List;
 public class PrintManager {
-    public void printList(List<Task> tasks, CommandLine cmd){
+    public void printList(List<Task> tasks, Boolean done){
 
-        if(GetIsDone.getValue(cmd)){
+        if(done){
             tasks.forEach(task ->{
               if (task.getDone()) {
                   PrintTask printTask = new PrintTask();

@@ -6,34 +6,30 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.MissingNode;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetFilePath;
 import com.fges.todoapp.taskmanager.Task;
-import com.fges.todoapp.taskmanager.TaskCreator;
-import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
 public class JsonInsert {
-    public static void insert(CommandLine cmd) throws IOException {
+    public static void insert(List<Task> tasks, Path filePath) throws IOException {
 
+        var fileContent = CommandGetFileContent.getFileContent(filePath);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode actualObj = mapper.readTree(CommandGetFileContent.getFileContent(cmd));
+        JsonNode actualObj = mapper.readTree(fileContent);
         if (actualObj instanceof MissingNode) {
             actualObj = JsonNodeFactory.instance.arrayNode();
         }
 
         if (actualObj instanceof ArrayNode arrayNode) {
-
-            TaskCreator taskCreator = new TaskCreator();
-
-            Task newTask = taskCreator.creator(cmd);
-
-            JsonNode taskNode = mapper.valueToTree(newTask);
-
-            arrayNode.add(taskNode);
+            for (Task task : tasks) {
+                JsonNode taskNode = mapper.valueToTree(task);
+                arrayNode.add(taskNode);
+            }
         }
 
-        Files.writeString(CommandGetFilePath.getFilePath(cmd), actualObj.toString());
+        Files.writeString(filePath, actualObj.toString());
     }
 }

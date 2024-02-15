@@ -3,30 +3,24 @@ package com.fges.todoapp.data.csvhandler;
 import com.fges.todoapp.data.csvhandler.csvfunction.CsvInsert;
 import com.fges.todoapp.data.csvhandler.csvfunction.CsvList;
 import com.fges.todoapp.data.FileHandlerBase;
-import com.fges.todoapp.logic.PrintManager;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
-import org.apache.commons.cli.CommandLine;
+import com.fges.todoapp.taskmanager.Task;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
 
 public class CsvFileBase implements FileHandlerBase {
 
     @Override
-    public void insert(CommandLine cmd)  {
-        CsvInsert.insert(cmd);
+    public void insert(List<Task> tasks, Path filePath)  {
+
+        CsvInsert.insert(tasks, filePath);
     }
 
     @Override
-    public void list(CommandLine cmd) throws IOException {
-        PrintManager printManager =new PrintManager();
-        printManager.printList(
-                CsvList.list(CommandGetFileContent.getFileContent(cmd)),
-                cmd
-        );
-
+    public List<Task> list(String fileContent) throws IOException {
+        return CsvList.list(fileContent);
     }
-
-
 
 }
 

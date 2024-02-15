@@ -13,6 +13,8 @@ public class CliOptionHandler {
 
         cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
 
+        cliOptions.addOption("m","migration", true, "permet de migrer un type de fichier vers un autre");
+
         return cliOptions;
     }
 }

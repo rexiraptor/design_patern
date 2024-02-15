@@ -1,11 +1,12 @@
 package com.fges.todoapp.data;
-import org.apache.commons.cli.CommandLine;
-
+import com.fges.todoapp.taskmanager.Task;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+
 public interface  FileHandlerBase {
-     void insert(CommandLine cmd) throws IOException;
+     void insert(List<Task> tasks, Path filePath) throws IOException;
 
-    void list( CommandLine cmd) throws IOException;
-
+    List<Task> list( String fileContent) throws IOException;
 
 }
