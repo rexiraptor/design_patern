@@ -157,3 +157,24 @@
 > 
 > modifier la logique d'execution de mes fonction (class CommandExecutor) en utilisant la meme technique que pour mon FileHandlerFactory
 > 
+>
+
+
+>## Quatrième Partie
+>
+>### Introduction
+>Dans cette partie du travail, l'accent a été mis sur la réutilisation et l'amélioration des fonctions d'insertion et de listing pour augmenter la flexibilité du programme. Une refonte significative de ces fonctions a été nécessaire pour éliminer leur interaction directe avec la ligne de commande, ce qui a entraîné une meilleure organisation des composants du programme et une augmentation de l'efficacité.
+>
+>### Modification des Fonctions d'Insertion et de Listing
+>Les fonctions d'insertion (`CsvInsert/JsonInsert`) et de listing ont été ajustées pour travailler de manière plus abstraite. Plutôt que d'intégrer directement des paramètres de la ligne de commande, ces fonctions requièrent désormais uniquement une liste de tâches et un chemin de fichier (`filePath`). Ce changement a permis une plus grande flexibilité dans l'utilisation de ces fonctions à travers différentes parties du programme.
+>
+>### Refonte de FileHandlerFactory
+>Une modification importante a été apportée à `fileHandlerFactory`, qui retournait initialement un objet `<Optional>` en cas d'erreur. Désormais, elle renvoie directement une erreur, simplifiant ainsi la gestion des cas d'erreur et renforçant la robustesse du programme.
+>
+>### Implémentation de la Fonction de Migration
+>L'implémentation de la fonction de migration a révélé l'importance d'une structure de programme bien organisée, où chaque classe joue un rôle précis. Cette fonction nécessitait que les interactions directes avec la ligne de commande soient limitées aux classes conçues à cet effet (`CommandExecutor`, `InsertAction`, `ListAction`, `MigrationAction`), soulignant l'importance de la séparation des préoccupations et du respect du principe de responsabilité unique.
+>
+>### Conclusion
+>Cette partie du travail a souligné l'importance d'une conception de programme flexible et bien structurée. En ajustant le niveau d'abstraction des fonctions d'insertion et de listing et en clarifiant le rôle de chaque classe, le programme est devenu plus robuste, efficace et facile à maintenir. La mise en œuvre réussie de la fonction de migration a servi de test de résistance, confirmant l'adéquation de la structure du programme et la clarté des responsabilités au sein de celui-ci.
+>
+> ![img.png](partie4.png)
