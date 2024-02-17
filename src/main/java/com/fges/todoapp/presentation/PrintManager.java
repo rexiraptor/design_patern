@@ -1,6 +1,5 @@
-package com.fges.todoapp.logic;
+package com.fges.todoapp.presentation;
 
-import com.fges.todoapp.presentation.PrintTask;
 import com.fges.todoapp.taskmanager.Task;
 
 import java.util.List;

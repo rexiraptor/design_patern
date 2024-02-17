@@ -2,7 +2,7 @@ package com.fges.todoapp.logic.commandhandler;
 
 import com.fges.todoapp.data.FileHandlerBase;
 import com.fges.todoapp.data.FileHandlerFactory;
-import com.fges.todoapp.logic.PrintManager;
+import com.fges.todoapp.presentation.PrintManager;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
 import com.fges.todoapp.presentation.settingsprovider.GetOptDone;

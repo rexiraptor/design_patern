@@ -14,12 +14,14 @@ public class CsvFileBase implements FileHandlerBase {
 
     @Override
     public void insert(List<Task> tasks, Path filePath)  {
-        CsvInsert.insert(tasks, filePath);
+        CsvInsert csvInsert =new CsvInsert();
+        csvInsert.insert(tasks, filePath);
     }
 
     @Override
     public List<Task> list(String fileContent) throws IOException {
-        return CsvList.list(fileContent);
+        CsvList csvList = new CsvList();
+        return csvList.list(fileContent);
     }
 
 }

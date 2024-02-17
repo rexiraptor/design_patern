@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MigrationAction implements CommandAction {
     @Override
-    public void execute( CommandLine cmd) throws IOException {
+    public void execute(CommandLine cmd) throws IOException {
         FileHandlerFactory fileHandlerFactory = new FileHandlerFactory();
         FileHandlerBase fileHandler = fileHandlerFactory.createFileHandler(CommandGetFileName.getFileName(cmd));
         FileHandlerBase migratorHandler = fileHandlerFactory.createFileHandler(CommandGetMigrationFileName.getFileName(cmd));
@@ -24,9 +24,5 @@ public class MigrationAction implements CommandAction {
         migratorHandler.insert(tasks, CommandGetMigrationFilePath.getFilePath(cmd));
 
 
-
-
-        //
-        // fileHandler.migration(cmd);
     }
 }

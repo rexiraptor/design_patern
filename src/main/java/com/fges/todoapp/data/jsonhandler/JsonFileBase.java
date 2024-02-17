@@ -13,13 +13,15 @@ public class JsonFileBase implements FileHandlerBase {
 
     @Override
     public void insert(List<Task> tasks , Path filePath) throws IOException {
-        JsonInsert.insert(tasks, filePath);
+        JsonInsert jsonInsert = new JsonInsert();
+        jsonInsert.insert(tasks, filePath);
 
     }
 
     @Override
     public List<Task> list(String fileContent) throws IOException {
-            return JsonList.list(fileContent);
+            JsonList jsonList = new JsonList();
+            return jsonList.list(fileContent);
     }
 }
 

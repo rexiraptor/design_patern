@@ -14,7 +14,7 @@ public class CsvInsert {
 //class qui sert a écrire une list de task dans un fichier csv
     private static final Logger LOGGER = Logger.getLogger(CsvInsert.class.getName());
 
-    public static void insert(List<Task> tasks, Path filePath) {
+    public void insert(List<Task> tasks, Path filePath) {
         try {
             StringBuilder fileContent = new StringBuilder(CommandGetFileContent.getFileContent(filePath));
 
