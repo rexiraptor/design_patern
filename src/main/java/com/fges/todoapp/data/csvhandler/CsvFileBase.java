@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
+//class regroupant les fonctions pour les différente action possible sur un fichier csv
 public class CsvFileBase implements FileHandlerBase {
 
     @Override
     public void insert(List<Task> tasks, Path filePath)  {
-
         CsvInsert.insert(tasks, filePath);
     }
 

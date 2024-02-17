@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CsvInsert {
-
+//class qui sert a écrire une list de task dans un fichier csv
     private static final Logger LOGGER = Logger.getLogger(CsvInsert.class.getName());
 
     public static void insert(List<Task> tasks, Path filePath) {

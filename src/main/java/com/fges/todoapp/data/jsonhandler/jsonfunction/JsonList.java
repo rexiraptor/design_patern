@@ -4,8 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.MissingNode;
 import com.fges.todoapp.taskmanager.Task;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class JsonList {
+    //fonction qui sert a retrouner une liste de task de toute les tache présente dans un fichier json
+
     public static List<Task> list(String fileContent) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode actualObj = mapper.readTree(fileContent);

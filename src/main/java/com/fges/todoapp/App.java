@@ -10,7 +10,7 @@ import org.apache.commons.cli.*;
 import java.io.IOException;
 
 
-
+//class main qui gere la logique global de l'application
 /**
  * Hello world!
  */

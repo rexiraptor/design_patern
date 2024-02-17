@@ -5,9 +5,10 @@ import com.fges.todoapp.data.FileHandlerFactory;
 import com.fges.todoapp.logic.PrintManager;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
-import com.fges.todoapp.taskmanager.taskvariable.GetIsDone;
+import com.fges.todoapp.presentation.settingsprovider.GetOptDone;
 import org.apache.commons.cli.CommandLine;
 import java.io.IOException;
+//class représentant quel action(fonction) effectuer lorsque l'utilisateur utilise la command list
 
 public class ListAction implements CommandAction {
     @Override
@@ -18,6 +19,6 @@ public class ListAction implements CommandAction {
         PrintManager printManager =new PrintManager();
         printManager.printList(
                 fileHandler.list(CommandGetFileContent.getFileContent(cmd)),
-                GetIsDone.getValue(cmd));
+                GetOptDone.getValue(cmd));
     }
 }

@@ -7,6 +7,7 @@ import com.fges.todoapp.taskmanager.Task;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
+//class regroupant les fonctions pour les différente action possible sur un fichier csv
 
 public class JsonFileBase implements FileHandlerBase {
 

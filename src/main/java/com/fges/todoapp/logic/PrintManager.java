@@ -4,10 +4,12 @@ import com.fges.todoapp.presentation.PrintTask;
 import com.fges.todoapp.taskmanager.Task;
 
 import java.util.List;
-public class PrintManager {
-    public void printList(List<Task> tasks, Boolean done){
 
-        if(done){
+//class qui gere la logique du print des tasks(ici en fonction du paramettre optdone)
+public class PrintManager {
+    public void printList(List<Task> tasks, Boolean optdone){
+
+        if(optdone){
             tasks.forEach(task ->{
               if (task.getDone()) {
                   PrintTask printTask = new PrintTask();

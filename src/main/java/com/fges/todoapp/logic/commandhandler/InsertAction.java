@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+//class représentant quel action(fonction) effectuer lorsque l'utilisateur utilise la command insert
 public class InsertAction implements CommandAction {
     @Override
     public void execute(CommandLine cmd) throws IOException {

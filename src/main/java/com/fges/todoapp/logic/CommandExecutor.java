@@ -9,6 +9,8 @@ import org.apache.commons.cli.CommandLine;
 import java.io.IOException;
 import java.util.Map;
 
+
+// execute une action(CommandAction) si elle est supporté, sinon renvoie une erreur
 public class CommandExecutor {
 
     private final Map<String, CommandAction> commandActions;
@@ -19,14 +21,11 @@ public class CommandExecutor {
 
     public void executeCommand( String command, CommandLine cmd) throws IOException {
 
-        var fileName = CommandGetFileName.getFileName(cmd);
-
-
             if (commandActions.containsKey(command)) {
                 commandActions.get(command).execute(cmd);
 
         } else {
-            throw new UnsupportedOperationException("Unsupported file type for: " + fileName);
+            throw new UnsupportedOperationException("Unsupported file type for: " + CommandGetFileName.getFileName(cmd));
         }
     }
 }

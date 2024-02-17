@@ -1,11 +1,9 @@
-package com.fges.todoapp.taskmanager.taskvariable;
+package com.fges.todoapp.presentation.settingsprovider;
 
-import com.fges.todoapp.presentation.settingsprovider.CommandCheckToDoName;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetCommand;
 import org.apache.commons.cli.CommandLine;
 
 import java.util.List;
-
+//class qui renvoie un le nom du todoname de la liste de commande
 public class GetTodoName {
 
     public static String todoName(CommandLine cmd){

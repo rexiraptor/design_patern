@@ -1,5 +1,6 @@
 package com.fges.todoapp.taskmanager;
 
+//class qui représente la structure d'une tache
 public class Task {
     private final String name;
     private final Boolean done;
