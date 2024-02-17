@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class CommandHandlerMap {
 
-        public static Map<String, FileCommandAction> initializeCommandActions() {
-            Map<String, FileCommandAction> commandActions = new HashMap<>();
+        public static Map<String, CommandAction> initializeCommandActions() {
+            Map<String, CommandAction> commandActions = new HashMap<>();
             commandActions.put("insert", new InsertAction());
             commandActions.put("list", new ListAction());
             commandActions.put("migration", new MigrationAction());

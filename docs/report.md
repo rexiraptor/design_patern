@@ -178,3 +178,6 @@
 >Cette partie du travail a souligné l'importance d'une conception de programme flexible et bien structurée. En ajustant le niveau d'abstraction des fonctions d'insertion et de listing et en clarifiant le rôle de chaque classe, le programme est devenu plus robuste, efficace et facile à maintenir. La mise en œuvre réussie de la fonction de migration a servi de test de résistance, confirmant l'adéquation de la structure du programme et la clarté des responsabilités au sein de celui-ci.
 >
 > ![img.png](partie4.png)
+> 
+>partie 4 bis:
+> j'ai modifier la class CommandAction pour qu'il ne prenne en parametre que le ligne de commande, cela permet de pouvoir effectuer d'autre type d'action que seulement sur un fichier(nouveaux type de command?) , cela va dans la suite de mes changements précédent peremtant plus de flexibilité mais aussi que chaque class est une utilité plus précise/comprhénsible 
