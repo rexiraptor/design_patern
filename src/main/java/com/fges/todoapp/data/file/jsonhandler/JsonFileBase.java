@@ -1,8 +1,8 @@
-package com.fges.todoapp.data.jsonhandler;
+package com.fges.todoapp.data.file.jsonhandler;
 
-import com.fges.todoapp.data.FileHandlerBase;
-import com.fges.todoapp.data.jsonhandler.jsonfunction.JsonInsert;
-import com.fges.todoapp.data.jsonhandler.jsonfunction.JsonList;
+import com.fges.todoapp.data.file.FileHandlerBase;
+import com.fges.todoapp.data.file.jsonhandler.jsonfunction.JsonInsert;
+import com.fges.todoapp.data.file.jsonhandler.jsonfunction.JsonList;
 import com.fges.todoapp.taskmanager.Task;
 import java.io.IOException;
 import java.nio.file.Path;

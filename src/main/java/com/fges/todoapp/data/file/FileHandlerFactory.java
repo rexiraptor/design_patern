@@ -1,4 +1,4 @@
-package com.fges.todoapp.data;
+package com.fges.todoapp.data.file;
 
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileExtension;
 
@@ -9,14 +9,14 @@ public class FileHandlerFactory {
     private final Map<String, FileHandlerBase> handlerMap;
 
     public FileHandlerFactory (){
-        this.handlerMap=FileHandlerMap.createSupportedHandlersMap();
+        this.handlerMap= FileHandlerMap.createSupportedHandlersMap();
     }
     public FileHandlerBase createFileHandler(String fileName) {
         String fileExtension = CommandGetFileExtension.getFileExtension(fileName);
         if (handlerMap.containsKey(fileExtension)) {
             return handlerMap.get(fileExtension);
         } else {
-            throw new UnsupportedOperationException("unsuported extension" + fileName);
+            throw new UnsupportedOperationException("unsuported file type (extension)" + fileName);
         }
     }
 }

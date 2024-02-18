@@ -1,7 +1,7 @@
 package com.fges.todoapp.logic.commandhandler.action;
 
-import com.fges.todoapp.data.FileHandlerBase;
-import com.fges.todoapp.data.FileHandlerFactory;
+import com.fges.todoapp.data.file.FileHandlerBase;
+import com.fges.todoapp.data.file.FileHandlerFactory;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFilePath;
 import com.fges.todoapp.taskmanager.Task;

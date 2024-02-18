@@ -1,4 +1,4 @@
-package com.fges.todoapp.data.jsonhandler.jsonfunction;
+package com.fges.todoapp.data.file.jsonhandler.jsonfunction;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

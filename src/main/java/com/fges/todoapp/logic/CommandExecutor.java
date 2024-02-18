@@ -25,7 +25,7 @@ public class CommandExecutor {
                 commandActions.get(command).execute(cmd);
 
         } else {
-            throw new UnsupportedOperationException("Unsupported file type for: " + CommandGetFileName.getFileName(cmd));
+            throw new UnsupportedOperationException("Unsupported command type for: " + CommandGetFileName.getFileName(cmd));
         }
     }
 }

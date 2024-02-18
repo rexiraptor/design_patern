@@ -1,7 +1,7 @@
-package com.fges.todoapp.data;
+package com.fges.todoapp.data.file;
 
-import com.fges.todoapp.data.csvhandler.CsvFileBase;
-import com.fges.todoapp.data.jsonhandler.JsonFileBase;
+import com.fges.todoapp.data.file.csvhandler.CsvFileBase;
+import com.fges.todoapp.data.file.jsonhandler.JsonFileBase;
 
 import java.util.HashMap;
 import java.util.Map;

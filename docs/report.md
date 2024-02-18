@@ -175,10 +175,21 @@ eventualities and better manage my errors, I sent my command line directly into 
 >
 >### Conclusion
 >This part of the work emphasized the importance of a flexible and well-structured program design.
-
-By adjusting the level of abstraction of the insertion and listing functions and clarifying the role of each class, the program became more robust, efficient, and easier to maintain. The successful implementation of the migration function served as a stress test, confirming the program structure's adequacy and the clarity of responsibilities within it.
+>By adjusting the level of abstraction of the insertion and listing functions and clarifying the role of each class, the program became more robust, efficient, and easier to maintain. The successful implementation of the migration function served as a stress test, confirming the program structure's adequacy and the clarity of responsibilities within it.
 >
 > ![img.png](partie4.png)
 >
->partie 4 bis:
+>### partie 4 bis:
 > I modified the CommandAction class to only take the command line as a parameter, allowing for other types of actions besides file operations (new command types?), continuing the trend of my previous changes allowing more flexibility but also ensuring that each class has a more precise/comprehensible utility
+> 
+>
+>#### Reflection on the different data sources:
+> I think that in order to implement other data sources besides just files, it suffices to create code and management like file handling.
+>
+> There would be a `SourceHandlerFactory` that returns the appropriate class using a hashmap of the different sources and their corresponding factories:  
+> if(File) -> FileHandlerFactory  
+> if(Api) -> ApiHandlerFactory  
+> It would then only be necessary to implement the important functions in an interface ( example for an API):  
+> -public void sendTask(Task task)  
+> -public void receiveTask()  
+>
