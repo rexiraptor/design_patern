@@ -1,8 +1,8 @@
-package com.fges.todoapp.data.csvhandler;
+package com.fges.todoapp.data.file.csvhandler;
 
-import com.fges.todoapp.data.csvhandler.csvfunction.CsvInsert;
-import com.fges.todoapp.data.csvhandler.csvfunction.CsvList;
-import com.fges.todoapp.data.FileHandlerBase;
+import com.fges.todoapp.data.file.csvhandler.csvfunction.CsvInsert;
+import com.fges.todoapp.data.file.csvhandler.csvfunction.CsvList;
+import com.fges.todoapp.data.file.FileHandlerBase;
 import com.fges.todoapp.taskmanager.Task;
 
 import java.io.IOException;
