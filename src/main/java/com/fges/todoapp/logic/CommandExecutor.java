@@ -2,7 +2,7 @@
 package com.fges.todoapp.logic;
 
 import com.fges.todoapp.logic.commandhandler.CommandHandlerMap;
-import com.fges.todoapp.logic.commandhandler.CommandAction;
+import com.fges.todoapp.logic.commandhandler.action.CommandAction;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
 import org.apache.commons.cli.CommandLine;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Map;
 
 
-// execute une action(CommandAction) si elle est supporté, sinon renvoie une erreur
+// Executes an action (CommandAction) if it is supported, otherwise returns an error
 public class CommandExecutor {
 
     private final Map<String, CommandAction> commandActions;

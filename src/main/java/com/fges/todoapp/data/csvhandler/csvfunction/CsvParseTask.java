@@ -4,7 +4,7 @@ import com.fges.todoapp.taskmanager.Task;
 
 
 
-//class qui sert a renvoyer une tache a partir d'un string (une ligne) d'un fichier csv
+// Class that serves to return a task from a string (a line) from a CSV file
 
 public class CsvParseTask {
     private static final String SEPARATOR = "\\|";

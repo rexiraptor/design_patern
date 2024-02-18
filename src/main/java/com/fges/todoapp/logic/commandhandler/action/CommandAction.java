@@ -1,9 +1,9 @@
-package com.fges.todoapp.logic.commandhandler;
+package com.fges.todoapp.logic.commandhandler.action;
 
 import org.apache.commons.cli.CommandLine;
 import java.io.IOException;
 
-// interface représentant la structure d'une action/commande a effectuer
+// Interface representing the structure of an action/command to be performed
 
 @FunctionalInterface
 public interface CommandAction {

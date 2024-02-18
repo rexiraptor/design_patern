@@ -4,8 +4,7 @@ import org.apache.commons.cli.Options;
 
 public class CliOptionHandler {
 
-    //class regroupant toute les options que l'on veut pouvoir ajouter sur la ligne de commande
-
+// Class grouping all the options that we want to be able to add on the command line
     public Options cliOptionHandler(){
 
         Options cliOptions= new Options();

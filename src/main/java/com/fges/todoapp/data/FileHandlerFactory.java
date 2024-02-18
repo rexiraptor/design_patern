@@ -3,7 +3,8 @@ package com.fges.todoapp.data;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileExtension;
 
 import java.util.Map;
-//class renvoyant le bon handler de fichier en fonction de son extension a partir d'un hasmap
+
+// Class returning the correct file handler based on its extension from a hashmap
 public class FileHandlerFactory {
     private final Map<String, FileHandlerBase> handlerMap;
 

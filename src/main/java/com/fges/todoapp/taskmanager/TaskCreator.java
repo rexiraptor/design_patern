@@ -5,8 +5,8 @@ import com.fges.todoapp.presentation.settingsprovider.GetTodoName;
 import com.fges.todoapp.presentation.settingsprovider.GetOptDone;
 import org.apache.commons.cli.CommandLine;
 
-//class créent une tache a partir de la command line( permet de ne pas changer la créeation de tache
-//dans tout les file handler si on veut potentielement changer leur format ou rajouter des options, genre une date de création)
+// Class creating a task from the command line (allows for not changing the task creation in
+// all file handlers if one wants to potentially change their format or add options, such as a creation date for example)
 public class TaskCreator {
     public Task creator(CommandLine cmd) {
 

@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class FileHandlerMap {
 
-    //HashMap qui contient le nom des extensions de fichier avec lesquelle l'application fonctionne,
-    // et leurs "FileHandlerBase" associé
+    // HashMap that contains the names of the file extensions with which the application works,
+    // and their associated "FileHandlerBase"
     public static Map<String, FileHandlerBase> createSupportedHandlersMap() {
         final Map<String, FileHandlerBase> handlerMap = new HashMap<>();
         handlerMap.put("csv", new CsvFileBase());

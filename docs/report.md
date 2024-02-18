@@ -1,53 +1,52 @@
-# L3 design pattern report
+# L3 Design Pattern Report
 
 - **Firstname**: [Nicolas]
 - **Lastname**: [DODART]
 
-
-> Add your thoughts on every TP bellow, everything is interesting but no need to right a book.
-> 
-> Keep it short simple and efficient:
-> 
+> Add your thoughts on every practical session below; everything is interesting, but there's no need to write a book.
+>
+> Keep it short, simple, and efficient:
+>
 > - What you did and why
 > - What helped you and why
-> - What did you find difficult
+> - What you found difficult
 > - What did not help you
-> - What did you need to change
+> - What you needed to change
 > - Anything relevant
-> 
-> Add a link to schemas describing your architecture (UML or not but add a legend)
-> 
+>
+> Add a link to diagrams describing your architecture (UML or not but add a legend)
+>
 > Remember: it is ok to make mistakes, you will have time to spot them later.
-> 
-> Fill free to contact me if needed.
+>
+> Feel free to contact me if needed.
 
 ---
 ...
 
-# Rapport du TP
+# Practical Session Report
 
->## Première Partie
->> ### introduction
->>Pour la première partie du TP, j'ai principalement essayé de mettre en œuvre le principe de responsabilité unique. Je n'ai pas ressenti de difficulté particulière lors de cette tâche, car c'est quelque chose que je pratique assez régulièrement lorsque je code, étant donné que j'ai l'esprit assez brouillon.  
->>J'ai également examiné deux autres points :
->>- Codage d'une tâche en tant qu'objet (classe Task)
->>- Travail sur la logique d'exécution des commandes (classes CommandExecutor, FileHandlerFactory)
+>## First Part
+>> ### Introduction
+>>For the first part of the practical session, I primarily focused on implementing the Single Responsibility Principle. I didn't encounter any particular difficulty in this task, as it's something I regularly practice when coding, given that I tend to think in a somewhat disorganized manner.
+>>I also looked into two other areas:
+>>- Coding a task as an object (Task class)
+>>- Working on the command execution logic (CommandExecutor, FileHandlerFactory classes)
 >
->>### Codage d'une tâche en tant qu'objet
->>J'ai travaillé sur la classe Task car j'ai réalisé qu'il était compliqué de changer le concept de tâche sans retravailler sur la partie "complexe / logique" du code. Cela a impliqué que je modifie le fonctionnement des insert et des list pour qu'ils s'adaptent au concept d'objet Task. J'ai réussi à appliquer ce concept pour les fichiers CSV, mais pas pour les fichiers JSON en raison d'un problème avec les guillemets (`"`), ce qui a entraîné l'échec du ghost test.(Résolu : c'était seulement les guillemets de début et de fin d'output, j'ai pu les rajouter "manuellement" lors du print.)
+>>### Coding a Task as an Object
+>>I worked on the Task class because I realized it was complicated to change the concept of a task without reworking the "complex / logical" part of the code. This meant I had to modify the insert and list operations to adapt them to the Task object concept. I managed to apply this concept to CSV files, but not for JSON files due to an issue with quotation marks (`"`), leading to the failure of the ghost test. (Resolved: it was just the starting and ending quotation marks in the output, I was able to add them "manually" during the print.)
 >
->>### Travail sur la logique d'exécution des commandes
->>En ce qui concerne la retravail de la logique d'exécution (classes CommandExecutor, FileHandlerFactory), c'est parce qu'il me semblait compliqué d'ajouter un nouveau type de gestion de fichier sans se prendre la tête avec la logique d'exécution du code (pavé de `if` et de `else`). J'ai donc travaillé sur ces classes avec l'idée de rendre cela plus simple.
+>>### Working on the Command Execution Logic
+>>Regarding the rework of the execution logic (CommandExecutor, FileHandlerFactory classes), it's because it seemed complicated to add a new type of file handling without getting bogged down in the execution logic of the code (a block of `if` and `else`). So, I worked on these classes with the idea of making this simpler.
 >
->>### Difficultés
->>#### Inserts avec Ghost Test
->>- Je n'ai pas réussi à trouver les commandes utilisées pour les inserts lors du Ghost Test.
->>#### Stockage dans les Fichiers 
->>- En lien avec le primier point, Je n'ai pas trouvé à quoi ressemblait le stockage dans les fichiers lorsque le test réussissait.
->>#### Gestion de Git
->> - Perte de temps due à une utilisation incorrecte de Git.
->> 
->#### diagrame de class de mon programme:
+>>### Difficulties
+>>#### Inserts with Ghost Test
+>>- I could not find the commands used for inserts during the Ghost Test.
+>>#### File Storage
+>>- In connection with the first point, I could not determine what the file storage looked like when the test succeeded.
+>>#### Git Management
+>>- Time lost due to incorrect use of Git.
+>>
+>#### Diagram of my program:
 > ```mermaid
 > classDiagram
 >     class App {
@@ -84,18 +83,20 @@
 >     FileHandlerBase <|.. JsonFileBase
 > ```
 ---
->## Deuxième Partie
+>## Second Part
 >>### Introduction
->>Pour la deuxième partie du TP, je me suis concentré sur plusieurs points. Tout d'abord, l'ajout de fonctionnalités demandées par Ilia. Ce processus n'a pas été très compliqué car j'avais déjà créé un objet Task et adapté mes classes Insert et List en conséquence. Il m'a suffi d'ajouter un paramètre dans la classe Task et dans ses initialisations. Pendant ce processus, je me suis rendu compte qu'il peut être éprouvant de changer tous les paramètres qui initialisent la classe Task. J'ai donc créé une classe TaskCreator (distincte de ma classe Task pour la garder la plus simple possible) où je me charge de renvoyer une tâche avec les paramètres d'initialisation de la class Task (permet de regrouper les paramètres d'initialisation dans un seul point central)
->>### Gestion des Tâches et Flexibilité
->>Pour couvrir le plus d'éventualités et mieux gérer mes erreurs, j'ai envoyé ma ligne de commande directement dans ma fonction Insert plutôt que de passer par une liste d'arguments positionnels . Cela peut être moins optimal, mais je pense que cela offre plus de flexibilité. Peut-être devrais-je appliquer la même méthode pour la fonction List ?
->>### Réflexion sur les Fonctions Statiques
->>Je me suis aussi préoccupé de mes nombreuses fonctions statiques. Pour cela, je me suis concentré sur les fonctions principales de mon programme. Je pense notamment à ma classe CommandExecutor, où il me semble beaucoup plus facile de comprendre le fonctionnement du code avec des fonctions en statique.
->>### Gestion des Tests
->>Au moment où je fais ce commit, j'ai laissé les listes avec un "-" si l'option `done == false` pour qu'elles passent toujours les ghost tests.
+>>For the second part of the practical session, I focused on several points. Firstly, adding features requested by Ilia. This process was not very complicated as I had already created a Task object and adapted my Insert and List classes accordingly. It only required me to add a parameter in the Task class and in its initializations. During this process, I realized it can be taxing to change all the parameters that initialize the Task class. So, I created a TaskCreator class (separate from my Task class to keep it as simple as possible) where I take care of returning a task with the initialization parameters of the Task class (allows grouping the initialization parameters in a single central point)
+>>### Task Management and Flexibility
+>>To cover as many
+
+eventualities and better manage my errors, I sent my command line directly into my Insert function rather than going through a list of positional arguments. This may be less optimal, but I think it offers more flexibility. Perhaps I should apply the same method to the List function?
+>>### Reflection on Static Functions
+>>I was also concerned about my numerous static functions. For this, I focused on the main functions of my program. I am thinking particularly of my CommandExecutor class, where it seems much easier to understand the code's operation with static functions.
+>>### Test Management
+>>At the time of this commit, I have left lists with a "-" if the `done == false` option so they always pass the ghost tests.
 >
->#### diagrame de class de mon programme:
->  (pour plus de lisibilité j'ai simplifié mon fichier CommandHandlers en une seul class excluant commandExecutor qui as pour moi une responsabilité plus grande  )
+>#### Diagram of my program:
+>  (for clarity, I simplified my CommandHandlers file into a single class excluding CommandExecutor which has, in my opinion, a greater responsibility)
 >```mermaid
 >classDiagram
 >    class App {
@@ -133,7 +134,7 @@
 >         +getCommand(CommandLine cmd): List<String>
 >         +getFileContent(Path filePath): String
 >         +isList(String command): boolean
->         +isinsert(String command): boolean
+>         +isInsert(String command): boolean
 >     }
 >
 >    Task<..TaskCreator
@@ -148,36 +149,36 @@
 >```
 ---
 
->## Troisième  Partie
-> j'ai commencé cette troisième en faisant deux chose:
-> ajouter une fonctionnalité dont je n'ai pas pris connaissance qu'il fallait l'ajouter (le -d sur la command list)  
-> corriger le partie list de mon prgramme pour correspondre a la sortie attendu par le ghost test
-> j'ai modifier la logique de ma class FileHandlerFactory pour qu'il soit beaucoup plus facile de mettre en place de nouveau type de fichier a gérer.
-> le but est de faire en sorte que les fichier puisse être identifiée et instanciée dynamiquement en fonction du nom du fichier, sans codage explicite des conditions pour chaque type. 
-> 
-> modifier la logique d'execution de mes fonction (class CommandExecutor) en utilisant la meme technique que pour mon FileHandlerFactory
-> 
+>## Third Part
+> I started this third part by doing two things:
+> adding a feature that I was not aware needed to be added (the -d on the list command)  
+> correcting the list part of my program to match the output expected by the ghost test
+> I modified the logic of my class FileHandlerFactory to make it much easier to implement new file types to manage.
+> The goal is to ensure that files can be identified and instantiated dynamically based on the file name, without explicitly coding conditions for each type.
+>
+> I modified the logic of my functions (class CommandExecutor) using the same technique as for my FileHandlerFactory
 >
 
-
->## Quatrième Partie
+>## Fourth Part
 >
 >### Introduction
->Dans cette partie du travail, l'accent a été mis sur la réutilisation et l'amélioration des fonctions d'insertion et de listing pour augmenter la flexibilité du programme. Une refonte significative de ces fonctions a été nécessaire pour éliminer leur interaction directe avec la ligne de commande, ce qui a entraîné une meilleure organisation des composants du programme et une augmentation de l'efficacité.
+>In this part of the work, the focus was on reusing and improving the insertion and listing functions to increase the program's flexibility. A significant overhaul of these functions was necessary to eliminate their direct interaction with the command line, resulting in better organization of program components and increased efficiency.
 >
->### Modification des Fonctions d'Insertion et de Listing
->Les fonctions d'insertion (`CsvInsert/JsonInsert`) et de listing ont été ajustées pour travailler de manière plus abstraite. Plutôt que d'intégrer directement des paramètres de la ligne de commande, ces fonctions requièrent désormais uniquement une liste de tâches et un chemin de fichier (`filePath`). Ce changement a permis une plus grande flexibilité dans l'utilisation de ces fonctions à travers différentes parties du programme.
+>### Modification of Insertion and Listing Functions
+>The insertion (`CsvInsert/JsonInsert`) and listing functions were adjusted to work more abstractly. Rather than directly integrating command line parameters, these functions now only require a list of tasks and a file path (`filePath`). This change allowed for greater flexibility in using these functions across different parts of the program.
 >
->### Refonte de FileHandlerFactory
->Une modification importante a été apportée à `fileHandlerFactory`, qui retournait initialement un objet `<Optional>` en cas d'erreur. Désormais, elle renvoie directement une erreur, simplifiant ainsi la gestion des cas d'erreur et renforçant la robustesse du programme.
+>### Overhaul of FileHandlerFactory
+>An important change was made to `fileHandlerFactory`, which initially returned an `<Optional>` object in case of error. Now, it directly returns an error, thereby simplifying error case management and strengthening the program's robustness.
 >
->### Implémentation de la Fonction de Migration
->L'implémentation de la fonction de migration a révélé l'importance d'une structure de programme bien organisée, où chaque classe joue un rôle précis. Cette fonction nécessitait que les interactions directes avec la ligne de commande soient limitées aux classes conçues à cet effet (`CommandExecutor`, `InsertAction`, `ListAction`, `MigrationAction`), soulignant l'importance de la séparation des préoccupations et du respect du principe de responsabilité unique.
+>### Implementation of the Migration Function
+>The implementation of the migration function highlighted the importance of a well-organized program structure, where each class plays a specific role. This function required that direct interactions with the command line be limited to classes designed for this purpose (`CommandExecutor`, `InsertAction`, `ListAction`, `MigrationAction`), underscoring the importance of separation of concerns and adherence to the Single Responsibility Principle.
 >
 >### Conclusion
->Cette partie du travail a souligné l'importance d'une conception de programme flexible et bien structurée. En ajustant le niveau d'abstraction des fonctions d'insertion et de listing et en clarifiant le rôle de chaque classe, le programme est devenu plus robuste, efficace et facile à maintenir. La mise en œuvre réussie de la fonction de migration a servi de test de résistance, confirmant l'adéquation de la structure du programme et la clarté des responsabilités au sein de celui-ci.
+>This part of the work emphasized the importance of a flexible and well-structured program design.
+
+By adjusting the level of abstraction of the insertion and listing functions and clarifying the role of each class, the program became more robust, efficient, and easier to maintain. The successful implementation of the migration function served as a stress test, confirming the program structure's adequacy and the clarity of responsibilities within it.
 >
 > ![img.png](partie4.png)
-> 
+>
 >partie 4 bis:
-> j'ai modifier la class CommandAction pour qu'il ne prenne en parametre que le ligne de commande, cela permet de pouvoir effectuer d'autre type d'action que seulement sur un fichier(nouveaux type de command?) , cela va dans la suite de mes changements précédent peremtant plus de flexibilité mais aussi que chaque class est une utilité plus précise/comprhénsible 
+> I modified the CommandAction class to only take the command line as a parameter, allowing for other types of actions besides file operations (new command types?), continuing the trend of my previous changes allowing more flexibility but also ensuring that each class has a more precise/comprehensible utility

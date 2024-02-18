@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class JsonList {
-    //class qui sert a retrouner une liste de task de toute les tache présente dans un fichier json
+// Function that serves to return a list of tasks from all the tasks present in a JSON file
 
     public  List<Task> list(String fileContent) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

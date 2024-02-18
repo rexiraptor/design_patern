@@ -3,7 +3,8 @@ package com.fges.todoapp.presentation.settingsprovider;
 import org.apache.commons.cli.CommandLine;
 
 
-//class qui renvoie true si il'y a l'option --d sur la ligne de command
+// Class that returns true if the --d option is on the command line
+
 public class GetOptDone {
     public static Boolean getValue(CommandLine cmd){
         return cmd.hasOption("done");

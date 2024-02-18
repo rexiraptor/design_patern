@@ -4,7 +4,7 @@ import com.fges.todoapp.taskmanager.Task;
 
 import java.util.List;
 
-//class qui gere la logique du print des tasks(ici en fonction du paramettre optdone)
+// Class that manages the logic of printing tasks (here based on the 'optdone' parameter)
 public class PrintManager {
     public void printList(List<Task> tasks, Boolean optdone){
 

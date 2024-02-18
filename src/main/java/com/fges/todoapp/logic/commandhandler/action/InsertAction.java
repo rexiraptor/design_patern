@@ -1,4 +1,4 @@
-package com.fges.todoapp.logic.commandhandler;
+package com.fges.todoapp.logic.commandhandler.action;
 
 import com.fges.todoapp.data.FileHandlerBase;
 import com.fges.todoapp.data.FileHandlerFactory;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//class représentant quel action(fonction) effectuer lorsque l'utilisateur utilise la command insert
+// Class representing which action (function) to perform when the user uses the insert command
 public class InsertAction implements CommandAction {
     @Override
     public void execute(CommandLine cmd) throws IOException {

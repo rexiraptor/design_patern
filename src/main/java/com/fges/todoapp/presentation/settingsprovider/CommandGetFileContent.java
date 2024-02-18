@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-//class qui renvoie le string du conteneu d'u fichier, celui ci peut etre utiliser par
-//par une Commandline ou un Path
+// Class that returns the string content of a file, which can be used by
+// either a CommandLine or a Path
+
 public class CommandGetFileContent {
     public static String getFileContent(CommandLine cmd) throws IOException {
         var filePath = CommandGetFilePath.getFilePath(cmd);

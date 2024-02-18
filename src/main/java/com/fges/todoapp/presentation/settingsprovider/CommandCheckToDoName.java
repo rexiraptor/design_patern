@@ -2,7 +2,7 @@ package com.fges.todoapp.presentation.settingsprovider;
 
 import java.util.List;
 
-//class qui vérifie si le todoname n'est est bien présent dans la ligne de command
+// Class that checks if the todoname is indeed present in the command line
 public class CommandCheckToDoName {
     public static boolean checkparams(List<String> positionalArgs){
         if (positionalArgs.size() < 2) {

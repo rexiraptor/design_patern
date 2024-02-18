@@ -3,7 +3,7 @@ package com.fges.todoapp.presentation.settingsprovider;
 import org.apache.commons.cli.CommandLine;
 
 import java.util.List;
-//class qui renvoie un le nom du todoname de la liste de commande
+//Class that returns the name of the todoname from the command list.
 public class GetTodoName {
 
     public static String todoName(CommandLine cmd){

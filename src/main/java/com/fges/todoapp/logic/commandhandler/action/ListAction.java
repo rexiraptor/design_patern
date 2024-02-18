@@ -1,4 +1,4 @@
-package com.fges.todoapp.logic.commandhandler;
+package com.fges.todoapp.logic.commandhandler.action;
 
 import com.fges.todoapp.data.FileHandlerBase;
 import com.fges.todoapp.data.FileHandlerFactory;

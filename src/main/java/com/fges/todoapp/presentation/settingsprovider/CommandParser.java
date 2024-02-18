@@ -2,7 +2,7 @@ package com.fges.todoapp.presentation.settingsprovider;
 
 import org.apache.commons.cli.*;
 
-//class qui parse la command line
+//class that parse the command line
 public class CommandParser {
     public static CommandLine parseCommandLine(String[] args, Options cliOptions) {
         CommandLineParser parser = new DefaultParser();

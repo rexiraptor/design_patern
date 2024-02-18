@@ -2,11 +2,17 @@
 package com.fges.todoapp.logic.commandhandler;
 
 
+import com.fges.todoapp.logic.commandhandler.action.CommandAction;
+import com.fges.todoapp.logic.commandhandler.action.InsertAction;
+import com.fges.todoapp.logic.commandhandler.action.ListAction;
+import com.fges.todoapp.logic.commandhandler.action.MigrationAction;
+
 import java.util.HashMap;
 import java.util.Map;
 
-//class regroupant les différentes action/command autorisé dans l'application,
-// et a quel class elle correspond dans chacun des cas
+// Class grouping the different allowed actions/commands in the application,
+// and to which class it corresponds in each case
+
 
 public class CommandHandlerMap {
 
@@ -16,7 +22,7 @@ public class CommandHandlerMap {
             commandActions.put("list", new ListAction());
             commandActions.put("migrate", new MigrationAction());
 
-            // Ajoutez d'autres commandes ici
+            // add more command here
             return commandActions;
         }
 }

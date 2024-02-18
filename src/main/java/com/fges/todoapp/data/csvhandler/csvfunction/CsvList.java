@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CsvList {
-    //fonction qui sert a retrouner une liste de task de toute les tache présente dans un fichier csv
+// Function that serves to return a list of tasks from all the tasks present in a CSV file
     public List<Task> list(String fileContent) {
         CsvParseTask csvParseTask = new CsvParseTask();
         return Arrays.stream(fileContent.split("\n"))

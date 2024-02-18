@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-//class qui sert a écrire une list de task dans un fichier json
-
+// Class that is used to write a list of tasks into a JSON file
 public class JsonInsert {
     public void insert(List<Task> tasks, Path filePath) throws IOException {
 

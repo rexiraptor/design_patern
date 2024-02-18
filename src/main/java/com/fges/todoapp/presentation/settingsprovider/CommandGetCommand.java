@@ -4,7 +4,7 @@ import org.apache.commons.cli.CommandLine;
 
 import java.util.List;
 
-//class qui renvoie la command demandé par l'utilisateur
+// Class that returns the command requested by the user
 public class CommandGetCommand {
 
     public static  List<String> getCommand(CommandLine cmd){
