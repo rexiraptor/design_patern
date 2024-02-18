@@ -11,7 +11,7 @@ import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 import java.util.List;
-//class représentant quel action(fonction) effectuer lorsque l'utilisateur utilise la command migration
+// Class representing what action to take when the user uses the 'migration' command.
 
 public class MigrationAction implements CommandAction {
     @Override
