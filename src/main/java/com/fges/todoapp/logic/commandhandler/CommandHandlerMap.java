@@ -14,7 +14,7 @@ public class CommandHandlerMap {
             Map<String, CommandAction> commandActions = new HashMap<>();
             commandActions.put("insert", new InsertAction());
             commandActions.put("list", new ListAction());
-            commandActions.put("migration", new MigrationAction());
+            commandActions.put("migrate", new MigrationAction());
 
             // Ajoutez d'autres commandes ici
             return commandActions;
