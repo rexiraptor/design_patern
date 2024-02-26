@@ -11,10 +11,13 @@ import com.fges.todoapp.taskmanager.Task;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 // Class that is used to write a list of tasks into a JSON file
 public class JsonInsert {
-    public void insert(List<Task> tasks, Path filePath) throws IOException {
+    public void insert(List<Task> tasks, String source) throws IOException {
+
+        Path filePath = Paths.get(source);
 
         var fileContent = CommandGetFileContent.getFileContent(filePath);
         ObjectMapper mapper = new ObjectMapper();

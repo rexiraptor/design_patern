@@ -5,7 +5,6 @@ import com.fges.todoapp.data.file.jsonhandler.jsonfunction.JsonInsert;
 import com.fges.todoapp.data.file.jsonhandler.jsonfunction.JsonList;
 import com.fges.todoapp.taskmanager.Task;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 // Class grouping the functions for the different possible actions on a JSON file
@@ -13,9 +12,9 @@ import java.util.List;
 public class JsonFileBase implements FileHandlerBase {
 
     @Override
-    public void insert(List<Task> tasks , Path filePath) throws IOException {
+    public void insert(List<Task> tasks , String source) throws IOException {
         JsonInsert jsonInsert = new JsonInsert();
-        jsonInsert.insert(tasks, filePath);
+        jsonInsert.insert(tasks, source);
 
     }
 

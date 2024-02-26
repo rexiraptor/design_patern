@@ -3,7 +3,8 @@ package com.fges.todoapp.logic;
 
 import com.fges.todoapp.logic.commandhandler.CommandHandlerMap;
 import com.fges.todoapp.logic.commandhandler.action.CommandAction;
-import com.fges.todoapp.presentation.settingsprovider.CommandGetFileName;
+
+import com.fges.todoapp.presentation.settingsprovider.CommandGetOpt;
 import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class CommandExecutor {
                 commandActions.get(command).execute(cmd);
 
         } else {
-            throw new UnsupportedOperationException("Unsupported command type for: " + CommandGetFileName.getFileName(cmd));
+            throw new UnsupportedOperationException("Unsupported command type for: " + CommandGetOpt.getOptionValue(cmd, "s"));
         }
     }
 }
