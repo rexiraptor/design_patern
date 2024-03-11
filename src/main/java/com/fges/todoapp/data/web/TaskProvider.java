@@ -7,11 +7,11 @@ import java.util.List;
 
 public class TaskProvider implements CrudProvider<Task>{
 
-    private List<Task> tasks = new ArrayList<>();
+    private final List<Task> tasks = new ArrayList<>();
 
     @Override
-    public void add(List<Task> task) {
-        tasks.addAll(task);
+    public void add(Task task) {
+        tasks.add(task);
     }
 
     @Override

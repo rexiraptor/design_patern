@@ -1,22 +1,22 @@
 package com.fges.todoapp.data.web;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.List;
 
 public class DummyCrudEndpoint<Domain> {
 
 
     private final String domainName;
     private final CrudProvider<Domain> crudProvider;
+    private final Class<Domain> domainClass;
 
     public DummyCrudEndpoint(String domainName, CrudProvider<Domain> crudProvider, Class<Domain> domainClass) {
         this.domainName = domainName;
         this.crudProvider = crudProvider;
+        this.domainClass = domainClass;
     }
 
 
@@ -45,8 +45,8 @@ public class DummyCrudEndpoint<Domain> {
                 }
             } else if (method.equals("POST")) {
                 try {
-                    var domains = objectParser.readValue(exchange.getRequestBody(), new TypeReference<List<Domain>>(){});
-                    crudProvider.add(domains);
+                    var domain = objectParser.readValue(exchange.getRequestBody(), domainClass);
+                    crudProvider.add(domain);
                     bodyContent = new MessageResponse("inserted");
                 } catch (Exception e) {
                     bodyContent = new MessageResponse("ERROR: " + e.getMessage());
