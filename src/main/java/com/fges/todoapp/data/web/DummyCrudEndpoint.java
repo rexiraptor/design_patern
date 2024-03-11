@@ -39,7 +39,8 @@ public class DummyCrudEndpoint<Domain> {
 
             if (method.equals("GET")) {
                 try {
-                    bodyContent = crudProvider.list();
+                   // bodyContent = crudProvider.list();
+                    bodyContent = ("hello");
                 } catch (Exception e) {
                     bodyContent = new MessageResponse("ERROR: " + e.getMessage());
                 }

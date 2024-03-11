@@ -14,7 +14,6 @@ import java.net.http.HttpResponse;
 public class PostTask {
 
 
-
     public void Post( Task task) throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();
@@ -31,7 +30,6 @@ public class PostTask {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
-
 
     }
 }
