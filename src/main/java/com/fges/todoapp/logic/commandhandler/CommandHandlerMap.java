@@ -3,9 +3,10 @@ package com.fges.todoapp.logic.commandhandler;
 
 
 import com.fges.todoapp.logic.commandhandler.action.CommandAction;
-import com.fges.todoapp.logic.commandhandler.action.InsertAction;
-import com.fges.todoapp.logic.commandhandler.action.ListAction;
-import com.fges.todoapp.logic.commandhandler.action.MigrationAction;
+import com.fges.todoapp.logic.commandhandler.action.fileaction.FileInsertAction;
+import com.fges.todoapp.logic.commandhandler.action.fileaction.FileListAction;
+import com.fges.todoapp.logic.commandhandler.action.fileaction.FileMigrationAction;
+import com.fges.todoapp.logic.commandhandler.action.webaction.WebStartAction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +19,10 @@ public class CommandHandlerMap {
 
         public static Map<String, CommandAction> initializeCommandActions() {
             Map<String, CommandAction> commandActions = new HashMap<>();
-            commandActions.put("insert", new InsertAction());
-            commandActions.put("list", new ListAction());
-            commandActions.put("migrate", new MigrationAction());
+            commandActions.put("insertFile", new FileInsertAction());
+            commandActions.put("listFile", new FileListAction());
+            commandActions.put("migrateFile", new FileMigrationAction());
+            commandActions.put("webStartFile", new WebStartAction());
 
             // add more command here
             return commandActions;

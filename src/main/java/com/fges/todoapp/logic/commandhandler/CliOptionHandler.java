@@ -11,7 +11,7 @@ public class CliOptionHandler {
 
         cliOptions.addOption("d","done", false, "Indique si la tâche est terminée");
 
-        cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
+        cliOptions.addRequiredOption("s", "source", true, "source containing the todos");
 
         cliOptions.addOption("o","output", true, "permet de migrer un type de fichier vers un autre");
 

@@ -1,7 +1,8 @@
-package com.fges.todoapp.logic.commandhandler.action;
+package com.fges.todoapp.logic.commandhandler.action.fileaction;
 
 import com.fges.todoapp.data.file.FileHandlerBase;
 import com.fges.todoapp.data.file.FileHandlerFactory;
+import com.fges.todoapp.logic.commandhandler.action.CommandAction;
 import com.fges.todoapp.presentation.settingsprovider.CommandGetFileContent;
 
 import com.fges.todoapp.presentation.settingsprovider.CommandGetOpt;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 // Class representing what action to take when the user uses the 'migration' command.
 
-public class MigrationAction implements CommandAction {
+public class FileMigrationAction implements CommandAction {
     @Override
     public void execute(CommandLine cmd) throws IOException {
         FileHandlerFactory fileHandlerFactory = new FileHandlerFactory();

@@ -193,3 +193,36 @@ eventualities and better manage my errors, I sent my command line directly into 
 > -public void sendTask(Task task)  
 > -public void receiveTask()  
 >
+
+
+>### partie 5:
+> tout d'abord j'ai modifié le paramêtre path de ma fonction insert dans mon fileHandler de path en String pour qu'il soit plus représentatif de ce qu'il est (je l'ai donc modifié en path plus bas dans mon application)
+>j'ai ensuite abordé le problème de multigestion des sources,j'ai tenté plusieurs approche abstraite : (abstract factory ou par des facades)
+> j'ai changé d'idée car la structure de mon programme rendais cela soit impossible soit trop compliqué (a mon sens)
+> j'ai donc basé ma solution sur la partie de gestion des action de mon programme
+> celui ci aurait une action pour chacun des type de source qu'il doit gérer. meme si cela enleve un niveau d'abstraction je pense que ca permet d'être plus précis dans ce que peut proposer chacun des types de stockage 
+> (les principales modification ce situe au niveau de la class source identifier et de la class CommandHandlerMap)
+> cela me permet aussi de gérer les nouvelle sources de la maniere dont j'ai envie et de créer "n'importe" qu'elle type de structure/interface
+> 
+> 
+> 
+> j'ai ensuite commencé a regarder pour faire la gestion web
+> malgré une grande aide en nous fournissant le CrudProvider et le DummyCrudEnpoint
+> il m'a fallu pas mal de temps pour reussir a me repérer et comprendre a quoi servait ce que l'on nous a fournit (très peut habituer a ce genre de manipulation ).
+> 
+> tout d'abord il y a eu une incomprehension au niveau logique
+> j'avais commencé par faire des class insertActionWeb/ ListActionWeb...
+> et je me suis rapidement rendu compte que la consigne demandais belle et bien
+> une seul action web :démarer le server
+> et que les actions  (insert/List) seront directement gérer par le serveur via des commands
+> 
+> une fois les attente et une idée de logique a peut pres défini,
+> j'ai commencé a essayer de simuler un interaction en code "brut"
+> le but étais de voir l'importance de chaque variable et le degrès d'abstraction que je pouvais apporté a chaqu'un
+> après avoir codé en "brut" une première interaction fonctionelle et determiné le niveau de chacune des variable
+> je me suis rendu compte que la structure que j'avais appliqué pour mes fichiers pouvais facilement s'appliquer a celui du web (CrudProvider=>FileHandlerBase/DummyCrudEnpoint≃>FileHandlerMap)
+> je l'ai donc tout simplement reproduit 
+> 
+> je n'ai pas enlevé ma class SourceIdentifier car meme si celle ci a très peut d'utilité pour l'instant, elle permait de forcer a garder une Structure"claire" et montrer ma vision des choses pour l'ajout de potentiel autre source de donnée (non fichier par exemple?)
+> 
+> 

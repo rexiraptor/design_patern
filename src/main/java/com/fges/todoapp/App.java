@@ -2,6 +2,7 @@ package com.fges.todoapp;
 
 
 
+import com.fges.todoapp.logic.SourceIdentifier;
 import com.fges.todoapp.logic.commandhandler.CliOptionHandler;
 import com.fges.todoapp.logic.CommandExecutor;
 import com.fges.todoapp.presentation.settingsprovider.*;
@@ -33,9 +34,15 @@ public class App {
 
 
         try {
+
+            SourceIdentifier sourceIdentifier = new SourceIdentifier();
+            sourceIdentifier.identifySource(CommandGetOpt.getOptionValue(cmd,"s"));
+
+            String actionSource =  command + sourceIdentifier.identifySource(CommandGetOpt.getOptionValue(cmd,"s"));
+
             CommandExecutor commandExecutor = new CommandExecutor();
             commandExecutor.executeCommand(
-                    command,
+                    actionSource,
                     cmd
             );
         } catch (IOException e) {

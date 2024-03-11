@@ -4,7 +4,6 @@ package com.fges.todoapp.logic;
 import com.fges.todoapp.logic.commandhandler.CommandHandlerMap;
 import com.fges.todoapp.logic.commandhandler.action.CommandAction;
 
-import com.fges.todoapp.presentation.settingsprovider.CommandGetOpt;
 import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
@@ -20,13 +19,13 @@ public class CommandExecutor {
         this.commandActions = CommandHandlerMap.initializeCommandActions();
     }
 
-    public void executeCommand( String command, CommandLine cmd) throws IOException {
+    public void executeCommand( String actionSource, CommandLine cmd) throws IOException, InterruptedException {
 
-            if (commandActions.containsKey(command)) {
-                commandActions.get(command).execute(cmd);
+            if (commandActions.containsKey(actionSource)) {
+                commandActions.get(actionSource).execute(cmd);
 
         } else {
-            throw new UnsupportedOperationException("Unsupported command type for: " + CommandGetOpt.getOptionValue(cmd, "s"));
+            throw new UnsupportedOperationException("Unsupported command type for: " + actionSource);
         }
     }
 }

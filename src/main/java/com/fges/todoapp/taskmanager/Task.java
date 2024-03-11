@@ -2,9 +2,10 @@ package com.fges.todoapp.taskmanager;
 
 // Class representing the structure of a task
 public class Task {
-    private final String name;
-    private final Boolean done;
-
+    private  String name;
+    private  Boolean done;
+    public Task() {
+    }
     public Task(String name,Boolean done) {
         this.name = name;
         this.done = done;
@@ -15,4 +16,6 @@ public class Task {
     }
 
     public Boolean getDone(){ return done;}
+
+
 }

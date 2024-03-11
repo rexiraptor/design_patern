@@ -7,5 +7,5 @@ import java.io.IOException;
 
 @FunctionalInterface
 public interface CommandAction {
-    void execute(CommandLine cmd) throws IOException;
+    void execute(CommandLine cmd) throws IOException, InterruptedException;
 }
