@@ -208,21 +208,9 @@ eventualities and better manage my errors, I sent my command line directly into 
 > 
 > j'ai ensuite commencé a regarder pour faire la gestion web
 > malgré une grande aide en nous fournissant le CrudProvider et le DummyCrudEnpoint
-> il m'a fallu pas mal de temps pour reussir a me repérer et comprendre a quoi servait ce que l'on nous a fournit (très peut habituer a ce genre de manipulation ).
-> 
-> tout d'abord il y a eu une incomprehension au niveau logique
-> j'avais commencé par faire des class insertActionWeb/ ListActionWeb...
-> et je me suis rapidement rendu compte que la consigne demandais belle et bien
-> une seul action web :démarer le server
-> et que les actions  (insert/List) seront directement gérer par le serveur via des commands
-> 
-> une fois les attente et une idée de logique a peut pres défini,
-> j'ai commencé a essayer de simuler un interaction en code "brut"
-> le but étais de voir l'importance de chaque variable et le degrès d'abstraction que je pouvais apporté a chaqu'un
-> après avoir codé en "brut" une première interaction fonctionelle et determiné le niveau de chacune des variable
-> je me suis rendu compte que la structure que j'avais appliqué pour mes fichiers pouvais facilement s'appliquer a celui du web (CrudProvider=>FileHandlerBase/DummyCrudEnpoint≃>FileHandlerMap)
-> je l'ai donc tout simplement reproduit 
-> 
-> je n'ai pas enlevé ma class SourceIdentifier car meme si celle ci a très peut d'utilité pour l'instant, elle permait de forcer a garder une Structure"claire" et montrer ma vision des choses pour l'ajout de potentiel autre source de donnée (non fichier par exemple?)
-> 
-> 
+> pour être honnette , je n'ai pas compris ce que vous attendier de nous a ce niveau la,
+> j'ai donc basé mon code sur les explications de sacha duviver .
+> ce que fais mon programme ressemble a peut pres a ce que demande la consigne 
+> a pas grand chose pres que je n'ai pas adapté ma task a ce qu'il y a dans l'exemple.
+> n'étant pas sur de moi (j'ai l'impression d'avoir fais n'importe quoi), je n'ai pas pris le temps de faire un objet pour la commande web 
+il y a un exemple de post dans le fichier zhttp.http

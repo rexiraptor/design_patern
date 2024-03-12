@@ -1,0 +1,11 @@
+POST http://localhost:8080/task
+Content-Type: application/json
+
+{
+  "name": "My too",
+  "done": true
+}
+
+###
+
+GET http://localhost:8080/task
