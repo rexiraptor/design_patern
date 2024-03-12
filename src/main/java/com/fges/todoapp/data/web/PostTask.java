@@ -23,7 +23,7 @@ public class PostTask {
         String json = objectMapper.writeValueAsString(task);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/task")) // Utilisez l'URL de votre serveur
+                .uri(URI.create("http://localhost:8080/task"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .build();

@@ -3,7 +3,7 @@ package com.fges.todoapp;
 
 
 import com.fges.todoapp.logic.SourceIdentifier;
-import com.fges.todoapp.logic.commandhandler.CliOptionHandler;
+import com.fges.todoapp.presentation.CliOptionHandler;
 import com.fges.todoapp.logic.CommandExecutor;
 import com.fges.todoapp.presentation.settingsprovider.*;
 import org.apache.commons.cli.*;
