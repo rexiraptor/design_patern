@@ -196,21 +196,8 @@ eventualities and better manage my errors, I sent my command line directly into 
 
 
 >### partie 5:
-> tout d'abord j'ai modifié le paramêtre path de ma fonction insert dans mon fileHandler de path en String pour qu'il soit plus représentatif de ce qu'il est (je l'ai donc modifié en path plus bas dans mon application)
->j'ai ensuite abordé le problème de multigestion des sources,j'ai tenté plusieurs approche abstraite : (abstract factory ou par des facades)
-> j'ai changé d'idée car la structure de mon programme rendais cela soit impossible soit trop compliqué (a mon sens)
-> j'ai donc basé ma solution sur la partie de gestion des action de mon programme
-> celui ci aurait une action pour chacun des type de source qu'il doit gérer. meme si cela enleve un niveau d'abstraction je pense que ca permet d'être plus précis dans ce que peut proposer chacun des types de stockage 
-> (les principales modification ce situe au niveau de la class source identifier et de la class CommandHandlerMap)
-> cela me permet aussi de gérer les nouvelle sources de la maniere dont j'ai envie et de créer "n'importe" qu'elle type de structure/interface
-> 
-> 
-> 
-> j'ai ensuite commencé a regarder pour faire la gestion web
-> malgré une grande aide en nous fournissant le CrudProvider et le DummyCrudEnpoint
-> pour être honnette , je n'ai pas compris ce que vous attendier de nous a ce niveau la,
-> j'ai donc basé mon code sur les explications de sacha duviver .
-> ce que fais mon programme ressemble a peut pres a ce que demande la consigne 
-> a pas grand chose pres que je n'ai pas adapté ma task a ce qu'il y a dans l'exemple.
-> n'étant pas sur de moi (j'ai l'impression d'avoir fais n'importe quoi), je n'ai pas pris le temps de faire un objet pour la commande web 
-il y a un exemple de post dans le fichier zhttp.http
+>Firstly, I modified the `path` parameter of my `insert` function in my `FileHandler` from `path` to `String` to make it more representative of what it is (thus, I changed it to `path` lower in my application). Next, I >addressed the issue of managing multiple sources. I attempted various abstract approaches (abstract factory or facades). I changed my mind because the structure of my program made this either impossible or too >complicated (in my opinion). Therefore, I based my solution on the action management part of my program, which would have an action for each type of source it needs to manage. Even though this removes a level of >abstraction, I think it allows for more precision in what each type of storage can offer (the main modifications are in the `SourceIdentifier` class and the `CommandHandlerMap` class). This also allows me to manage new >sources in the way I want and to create "any" type of structure/interface.
+
+>Then, I started looking into web management. Despite great help by providing us with the `CrudProvider` and the `DummyCrudEndpoint`, to be honest, I did not understand what you expected from us at this level. Therefore, >I based my code on the explanations of Sacha Duviver. What my program does is roughly what the instructions ask for, except that I did not adapt my task to what is in the example. Not being sure of myself (I feel like I >did anything), I did not take the time to create an object for the web command. There is an example of a post in the file `zhttp.http`.
+
+---
